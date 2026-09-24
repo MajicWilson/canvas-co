@@ -1,0 +1,10 @@
+# Private data: never publish
+sales.csv
+testimonials.csv
+
+# Derived from the private data / internal strategy notes
+customer-favorites.md
+competitor-research.md
+
+# Local tooling
+.claude/

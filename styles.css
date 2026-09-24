@@ -1,0 +1,178 @@
+:root {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --ink: #20242c;
+  --muted: #6f7480;
+  --accent: #b5673f;
+  --accent-dark: #9a5533;
+  --line: #ece8e1;
+  --radius: 14px;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.55;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--accent); }
+
+h1, h2, h3, h4, .wordmark { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
+
+/* Layout width + side gutters */
+.site-header, .hero, .collections, .catalog, .why, .about, .site-footer {
+  width: min(1080px, 100% - 32px);
+  margin-inline: auto;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+.wordmark { font-size: 1.5rem; color: var(--ink); text-decoration: none; }
+.site-header nav { display: flex; flex-wrap: wrap; gap: 28px; }
+.site-header nav a { color: var(--muted); text-decoration: none; }
+.site-header nav a:hover { color: var(--accent); }
+
+/* Hero */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding: 88px 0;
+}
+.hero h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); margin: 0 0 20px; }
+.hero p { font-size: 1.125rem; color: var(--muted); margin: 0 0 32px; }
+.hero-image {
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 32px rgba(32, 36, 44, 0.08);
+}
+
+.button {
+  display: inline-block;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+}
+.button:hover { background: var(--accent-dark); }
+
+/* Section headings */
+.collections > h2, .catalog > h2, .why > h2, .about h2 { font-size: 2.25rem; margin: 0 0 12px; }
+.section-note { margin: 0 0 40px; color: var(--muted); font-size: 1.125rem; }
+
+/* Collections */
+.collections { padding: 40px 0 16px; }
+.collection { margin-top: 64px; }
+.collection h3 { font-size: 1.5rem; margin: 0; }
+.collection-note { margin: 6px 0 28px; color: var(--muted); }
+
+/* Why Canvas & Co */
+.why {
+  margin-top: 8px;
+  padding: 56px 0 64px;
+  border-top: 1px solid var(--line);
+}
+.why blockquote {
+  margin: 14px 0 8px;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.why cite {
+  display: block;
+  font-style: normal;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+/* Catalog */
+.catalog {
+  margin-top: 80px;
+  padding-top: 72px;
+  border-top: 1px solid var(--line);
+}
+
+/* Product grid + cards */
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 28px;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.card h4 { font-size: 1.1rem; margin: 16px 20px 2px; }
+.card .price { margin: 0 20px 20px; color: var(--muted); }
+
+/* Catalog cards: tag, name, price grouped in a padded body */
+.card-body { padding: 18px 20px 20px; }
+.card-body h4 { margin: 12px 0 2px; }
+.card-body .price { margin: 0; }
+
+.tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--accent);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+/* About */
+.about {
+  margin-top: 88px;
+  padding: 72px 0;
+  max-width: 680px;
+  border-top: 1px solid var(--line);
+}
+.about p { margin: 0 0 16px; }
+
+/* Footer */
+.site-footer {
+  padding: 48px 0 64px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.site-footer h2 { font-size: 1.5rem; color: var(--ink); margin: 0 0 12px; }
+.site-footer p { margin: 4px 0; }
+.fine-print { margin-top: 28px !important; font-size: 0.875rem; }
+
+/* Phones */
+@media (max-width: 720px) {
+  .hero { grid-template-columns: 1fr; padding: 40px 0 56px; gap: 32px; }
+  .hero-image { order: -1; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .card h4 { margin: 12px 14px 2px; font-size: 1rem; }
+  .card .price { margin: 0 14px 14px; }
+  .card-body { padding: 14px; }
+  .card-body h4 { margin: 10px 0 2px; }
+  .card-body .price { margin: 0; }
+  .site-header nav { gap: 18px; }
+  .collections > h2, .catalog > h2, .why > h2, .about h2 { font-size: 1.875rem; }
+}
